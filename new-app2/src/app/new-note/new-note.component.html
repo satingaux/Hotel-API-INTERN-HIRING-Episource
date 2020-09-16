@@ -1,0 +1,27 @@
+
+
+
+<div class="ui-g global">
+  <button (click)="addNote()" mat-raised-button color="primary" aria-label="Example icon button with a plus one icon" style="margin: 20px;">
+    <!-- <mat-icon>plus_one</mat-icon> -->
+    Add new note
+  </button>
+  <div class="ui-g-12 ui-sm-12 ui-md-3 ui-lg-3" *ngFor="let item of apiService.notes; let i = index" >
+    <mat-card [ngStyle]="{'background-color': item.color}" style="width: 300px; margin: 20px;">
+      <mat-card-title>
+        {{item.title}}
+      </mat-card-title>
+      <mat-card-content>
+        {{item.description}}
+      </mat-card-content>
+      <mat-card-footer>
+        <button (click)="deleteNote(i)" style="margin: 10px;" mat-mini-fab color="default" aria-label="Example icon button with a plus one icon">
+          <mat-icon style="color: red;">delete</mat-icon>
+        </button>
+        <button (click)="editNote(i)" style="margin: 10px;" mat-raised-button color="default" aria-label="Example icon button with a plus one icon">
+          edit
+        </button>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>

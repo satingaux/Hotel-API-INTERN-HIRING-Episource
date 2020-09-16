@@ -1,0 +1,52 @@
+<div  [ngStyle]="{'background-color': '#F2E7FE'}" class="ui-g" style="display: grid; justify-content: center; background-color: #EBE8FA; padding: 50px;">
+
+
+
+  <div class="ui-g-12 ui-sm-12 ui-md-10 ui-lg-12">
+
+
+  <mat-card novalidate style="width: 90%; margin: auto; padding: 50px;">
+    <h2 style="padding: 12px; font-weight: 900;">
+      {{pageTitle}}
+    </h2>
+
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+      <mat-form-field appearance="outline" style="width: 100%;">
+        <textarea matInput placeholder="Note Title" formControlName="title" required></textarea>
+        <mat-error *ngIf="!formGroup.controls['title'].valid && formGroup.controls['title'].touched">
+          Required field, must be between 1 and 100 characters.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" style="width: 100%;">
+        <textarea matInput placeholder="Note Description" formControlName="description" required></textarea>
+        <mat-error *ngIf="!formGroup.controls['description'].valid && formGroup.controls['description'].touched">
+          Required field, must be between 1 and 100 characters.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Select Color</mat-label>
+        <mat-select  formControlName="color">
+          <mat-option [ngStyle]="{'background-color': color}"  *ngFor="let color of colors" [value]="color">
+            {{color}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <div style="padding-top: 20px;">
+        <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Save Note</button>
+      </div>
+
+    </form>
+  </mat-card>
+
+  </div>
+</div>
+
+
+
+<!-- Copyright 2020 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
