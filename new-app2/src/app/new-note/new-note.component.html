@@ -7,7 +7,7 @@
     Add new note
   </button>
   <div class="ui-g-12 ui-sm-12 ui-md-3 ui-lg-3" *ngFor="let item of apiService.notes; let i = index" >
-    <mat-card [ngStyle]="{'background-color': item.color}" style="width: 300px; margin: 20px;">
+    <mat-card [ngStyle]="{'background-color': item.color}" style="width: 350px; margin: 20px; padding: 30px;">
       <mat-card-title>
         {{item.title}}
       </mat-card-title>
@@ -15,12 +15,13 @@
         {{item.description}}
       </mat-card-content>
       <mat-card-footer>
-        <button (click)="deleteNote(i)" style="margin: 10px;" mat-mini-fab color="default" aria-label="Example icon button with a plus one icon">
-          <mat-icon style="color: red;">delete</mat-icon>
+        <button mat-button [matMenuTriggerFor]="menu" style="position: absolute;right: 0px; bottom: 0px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M4.5 10.5c-.825 0-1.5.675-1.5 1.5s.675 1.5 1.5 1.5S6 12.825 6 12s-.675-1.5-1.5-1.5zm15 0c-.825 0-1.5.675-1.5 1.5s.675 1.5 1.5 1.5S21 12.825 21 12s-.675-1.5-1.5-1.5zm-7.5 0c-.825 0-1.5.675-1.5 1.5s.675 1.5 1.5 1.5 1.5-.675 1.5-1.5-.675-1.5-1.5-1.5z"/></svg>
         </button>
-        <button (click)="editNote(i)" style="margin: 10px;" mat-raised-button color="default" aria-label="Example icon button with a plus one icon">
-          edit
-        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item  (click)="editNote(i)" >Edit note</button>
+          <button mat-menu-item (click)="deleteNote(i)" >Remove  note</button>
+        </mat-menu>
       </mat-card-footer>
     </mat-card>
   </div>
