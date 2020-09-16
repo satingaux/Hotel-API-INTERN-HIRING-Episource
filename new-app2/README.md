@@ -1,4 +1,12 @@
-# NewApp2
+# Note-App
+
+Problem Statement:
+- Create a simple note-taking app. Use JS and CSS. You should be able to:
+— Add a note
+— Edit a note
+— Delete a note
+— Each note should look like a colored rectangular box.
+— Boxes can be colored in different colors, selected from a fixed list of colors.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.8.
 
